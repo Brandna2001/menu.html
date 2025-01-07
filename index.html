@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Boneless y Papas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        header {
+            background-color: #ff6600;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .container {
+            padding: 1rem;
+        }
+        .menu-item {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .menu-item h3 {
+            margin-top: 0;
+        }
+        .menu-item button {
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .menu-item button:hover {
+            background-color: #e55a00;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            margin-top: 1rem;
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Menú Boneless y Papas</h1>
+        <p>Viernes: desde las 7:00 PM | Sábado: desde las 4:00 PM</p>
+    </header>
+    <div class="container">
+        <div class="menu-item">
+            <h3>Boneless Solos</h3>
+            <p>Incluyen bastones de zanahoria y apio, salsa y aderezo opcional.</p>
+            <p><strong>200 g:</strong> $65.84 | <strong>250 g:</strong> $74.84</p>
+            <button onclick="addToOrder('Boneless Solos (200 g) - $65.84')">Ordenar 200 g</button>
+            <button onclick="addToOrder('Boneless Solos (250 g) - $74.84')">Ordenar 250 g</button>
+        </div>
+        <div class="menu-item">
+            <h3>Papas a la Francesa</h3>
+            <p>Preparadas con catsup, queso y salsa.</p>
+            <p><strong>200 g:</strong> $43.26 | <strong>300 g:</strong> $52.26</p>
+            <button onclick="addToOrder('Papas a la Francesa (200 g) - $43.26')">Ordenar 200 g</button>
+            <button onclick="addToOrder('Papas a la Francesa (300 g) - $52.26')">Ordenar 300 g</button>
+        </div>
+        <div class="menu-item">
+            <h3>Paquete Boneless + Papas</h3>
+            <p>Incluye boneless y papas preparados a tu gusto.</p>
+            <p><strong>200 g Boneless + 200 g Papas:</strong> $99.10</p>
+            <p><strong>200 g Boneless + 300 g Papas:</strong> $108.10</p>
+            <p><strong>250 g Boneless + 200 g Papas:</strong> $108.10</p>
+            <p><strong>250 g Boneless + 300 g Papas:</strong> $117.10</p>
+            <button onclick="addToOrder('Paquete (200 g Boneless + 200 g Papas) - $99.10')">Ordenar 200g + 200g</button>
+            <button onclick="addToOrder('Paquete (200 g Boneless + 300 g Papas) - $108.10')">Ordenar 200g + 300g</button>
+            <button onclick="addToOrder('Paquete (250 g Boneless + 200 g Papas) - $108.10')">Ordenar 250g + 200g</button>
+            <button onclick="addToOrder('Paquete (250 g Boneless + 300 g Papas) - $117.10')">Ordenar 250g + 300g</button>
+        </div>
+    </div>
+    <footer>
+        <p>¡Haz tu pedido ahora y disfruta! 🐔🍟</p>
+        <button onclick="sendOrder()">Enviar Pedido por WhatsApp</button>
+    </footer>
+    <script>
+        let order = [];
+
+        function addToOrder(item) {
+            order.push(item);
+            alert(`${item} añadido al pedido.`);
+        }
+
+        function sendOrder() {
+            if (order.length === 0) {
+                alert('Tu pedido está vacío.');
+                return;
+            }
+            const orderText = order.join('%0A');
+            const whatsappLink = `https://wa.me/5215515337791?text=Hola%20quiero%20ordenar:%0A${orderText}`;
+            window.open(whatsappLink, '_blank');
+        }
+    </script>
+</body>
+</html>
